@@ -36,7 +36,7 @@ email_text = st.text_area("Email-content", value=content, height=300)
 options = ["Select status", "Good to send email", "Needs edits", "Hold"]
 status = st.selectbox("Approval status", options)
 
-# Send button
+# Send button - only works if status is "Good to send email"
 if st.button("Send email"):
     if status != "Good to send email":
         st.warning('Please select "Good to send email" from the dropdown before sending.')

@@ -1,0 +1,31 @@
+# Microsoft Foundry Project Configuration
+name: foundry-pipeline
+version: 1.0.0
+description: Data engineering pipeline with Spark and Delta Lake
+
+python:
+  version: "3.9"
+  venv: venv
+
+spark:
+  master: local[*]
+  driver_memory: 4g
+  executor_memory: 2g
+
+logging:
+  level: INFO
+  format: json
+  output: stdout
+
+azure:
+  authentication: managed_identity
+  services:
+    - storage
+    - data_factory
+    - synapse
+
+pipeline:
+  batch_size: 1000
+  max_retries: 3
+  retry_delay: 5
+  timeout: 3600

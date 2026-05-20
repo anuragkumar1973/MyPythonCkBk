@@ -27,6 +27,7 @@ class Config(BaseSettings):
     # Foundry
     foundry_workspace: Optional[str] = Field(default=None, env="FOUNDRY_WORKSPACE")
     foundry_api_key: Optional[str] = Field(default=None, env="FOUNDRY_API_KEY")
+    endpoint: Optional[str] = Field(default=None, env="ENDPOINT")
     
     # Spark
     spark_master: str = Field(default="local[*]", env="SPARK_MASTER")

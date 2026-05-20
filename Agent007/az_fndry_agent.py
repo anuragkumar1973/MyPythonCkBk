@@ -8,8 +8,14 @@ import sys
 from azure.identity import DefaultAzureCredential, AzureCliCredential
 from azure.ai.projects import AIProjectClient
 from azure.core.exceptions import ClientAuthenticationError
+from src.utils.config import load_config
 
-endpoint = "https://anuragkumar1973-0503-resource.services.ai.azure.com/api/projects/anuragkumar1973-0503"
+# Load configuration from .env file
+config = load_config()
+endpoint = config.endpoint
+
+if not endpoint:
+    raise ValueError("ENDPOINT is not configured in the .env file. Please set the ENDPOINT variable.")
 
 # Try multiple credential types
 credentials_to_try = [
